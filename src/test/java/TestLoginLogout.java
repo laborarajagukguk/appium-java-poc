@@ -158,10 +158,37 @@ public class TestLoginLogout extends AndroidSetup {
         MobileElement removeButton = ad.findElement(By.id("com.saucelabs.mydemoapp.android:id/removeBt"));
         Assert.assertTrue(removeButton.isDisplayed());
     }
-    @Stories("As a user I'm able to remove a Product from the Cart")
+
+    @Stories("As a user I'm able to open checkout page")
     @TestCaseId("TC_KRM_009")
-    @Title("Verify user success to add a Product to the Cart")
+    @Title("Verify user success continue to check out page")
     @Test(priority = 8)
+    public void testProceedToCheckout() {
+        // Open the cart
+        MobileElement cartIcon = ad.findElement(By.id("com.saucelabs.mydemoapp.android:id/cartIV"));
+        cartIcon.click();
+
+        WebDriverWait wait = new WebDriverWait(ad, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.saucelabs.mydemoapp.android:id/productRV")));
+
+
+        // Verify product is in the cart
+        MobileElement cartPage = ad.findElement(By.id("com.saucelabs.mydemoapp.android:id/productTV"));
+        Assert.assertTrue(cartPage.isDisplayed());
+
+        MobileElement checkoutButton = ad.findElement(By.id("com.saucelabs.mydemoapp.android:id/cartBt"));
+        checkoutButton.click();
+
+         // Verify checkout page is displayed
+         MobileElement checkoutTitle = ad.findElement(By.id("com.saucelabs.mydemoapp.android:id/checkoutTitleTV"));
+        Assert.assertTrue(checkoutTitle.isDisplayed());
+
+    }
+
+    @Stories("As a user I'm able to remove a Product from the Cart")
+    @TestCaseId("TC_KRM_010")
+    @Title("Verify user success to add a Product to the Cart")
+    @Test(priority = 9)
     public void testRemoveProductFromCart() {
         // Click the "Remove" button
         MobileElement removeButton = ad.findElement(By.id("com.saucelabs.mydemoapp.android:id/removeBt"));
