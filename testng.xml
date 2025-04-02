@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="DemoApp" verbose="1" parallel="tests" thread-count="1">
+
+    <test name="Login Apps Nexus 6">
+        <parameter name="udid" value="ENU7N15A28011693"/>
+        <classes>
+            <class name="TestLoginLogout"/>
+        </classes>
+    </test>
+    <test name="Login Apps Nexus 5">
+        <parameter name="udid" value="061d21df0b2bc24b"/>
+        <classes>
+            <class name="TestLoginLogout"/>
+        </classes>
+    </test>
+<!--
+    <test name="Login Apps All Devices" preserve-order="false">
+        < parameter name="udid" value="http://192.168.1.30:4444/wd/hub"/>
+        <classes>
+            <class name="TestLoginLogout"/>
+        </classes>
+    </test>
+-->
+</suite>
